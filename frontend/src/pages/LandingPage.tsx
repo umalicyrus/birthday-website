@@ -24,7 +24,7 @@ export function LandingPage() {
   });
 
   // Birthday date - you can customize this
-  const birthdayDate = new Date("2026-04-20T00:00:00");
+  const birthdayDate = new Date("2026-05-20T00:00:00");
 
   // Celebrant gallery images
   const galleryImages = [
@@ -96,14 +96,14 @@ export function LandingPage() {
             Join us in celebrating
           </p>
           <h2 className="text-3xl md:text-5xl mb-6 text-pink-600">
-            Sarah's Birthday
+            Naiah's Birthday
           </h2>
 
           {/* Date & Time */}
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 shadow-lg">
             <div className="flex items-center justify-center gap-2 mb-4 text-rose-700">
               <Calendar className="w-5 h-5" />
-              <p className="text-lg">April 20 , 2026 at 6:00 PM</p>
+              <p className="text-lg">May 20, 2026 at 6:00 PM</p>
             </div>
 
             {/* Countdown */}
@@ -256,7 +256,7 @@ export function LandingPage() {
                   </div>
                   <div>
                     <h3 className="text-lg mb-1 text-rose-900">Time</h3>
-                    <p className="text-rose-700">May 15, 2026</p>
+                    <p className="text-rose-700">May 20, 2026</p>
                     <p className="text-rose-600">6:00 PM - 11:00 PM</p>
                   </div>
                 </div>
