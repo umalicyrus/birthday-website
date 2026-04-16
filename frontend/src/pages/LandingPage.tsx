@@ -64,7 +64,7 @@ export function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100">
+    <div className="min-h-screen bg-linear-to-br from-pink-50 via-rose-50 to-pink-100">
       {/* Hero Section */}
       <div className="relative min-h-screen flex items-center justify-center overflow-hidden py-12">
         <div
@@ -103,24 +103,24 @@ export function LandingPage() {
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 shadow-lg">
             <div className="flex items-center justify-center gap-2 mb-4 text-rose-700">
               <Calendar className="w-5 h-5" />
-              <p className="text-lg">May 15, 2026 at 6:00 PM</p>
+              <p className="text-lg">April 20 , 2026 at 6:00 PM</p>
             </div>
 
             {/* Countdown */}
             <div className="grid grid-cols-4 gap-2 md:gap-4">
-              <div className="bg-gradient-to-br from-pink-400 to-pink-500 text-white rounded-xl p-3 md:p-4">
+              <div className="bg-linear-to-br from-pink-400 to-pink-500 text-white rounded-xl p-3 md:p-4">
                 <div className="text-2xl md:text-4xl">{timeLeft.days}</div>
                 <div className="text-xs md:text-sm">Days</div>
               </div>
-              <div className="bg-gradient-to-br from-rose-400 to-rose-500 text-white rounded-xl p-3 md:p-4">
+              <div className="bg-linear-to-br from-rose-400 to-rose-500 text-white rounded-xl p-3 md:p-4">
                 <div className="text-2xl md:text-4xl">{timeLeft.hours}</div>
                 <div className="text-xs md:text-sm">Hours</div>
               </div>
-              <div className="bg-gradient-to-br from-pink-500 to-rose-500 text-white rounded-xl p-3 md:p-4">
+              <div className="bg-linear-to-br from-pink-500 to-rose-500 text-white rounded-xl p-3 md:p-4">
                 <div className="text-2xl md:text-4xl">{timeLeft.minutes}</div>
                 <div className="text-xs md:text-sm">Minutes</div>
               </div>
-              <div className="bg-gradient-to-br from-rose-400 to-pink-400 text-white rounded-xl p-3 md:p-4">
+              <div className="bg-linear-to-br from-rose-400 to-pink-400 text-white rounded-xl p-3 md:p-4">
                 <div className="text-2xl md:text-4xl">{timeLeft.seconds}</div>
                 <div className="text-xs md:text-sm">Seconds</div>
               </div>
@@ -131,7 +131,7 @@ export function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-8">
             <button
               onClick={() => navigate("/donate")}
-              className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white rounded-xl p-4 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
+              className="bg-linear-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white rounded-xl p-4 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
             >
               <Gift className="w-6 h-6" />
               <span className="text-sm md:text-base">Send Gift</span>
@@ -139,7 +139,7 @@ export function LandingPage() {
 
             <button
               onClick={() => navigate("/photos")}
-              className="bg-gradient-to-r from-rose-400 to-rose-500 hover:from-rose-500 hover:to-rose-600 text-white rounded-xl p-4 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
+              className="bg-linear-to-r from-rose-400 to-rose-500 hover:from-rose-500 hover:to-rose-600 text-white rounded-xl p-4 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
             >
               <Camera className="w-6 h-6" />
               <span className="text-sm md:text-base">Photos</span>
@@ -147,7 +147,7 @@ export function LandingPage() {
 
             <button
               onClick={() => navigate("/messages")}
-              className="bg-gradient-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white rounded-xl p-4 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
+              className="bg-linear-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white rounded-xl p-4 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
             >
               <MessageCircle className="w-6 h-6" />
               <span className="text-sm md:text-base">Messages</span>
@@ -155,7 +155,7 @@ export function LandingPage() {
 
             <button
               onClick={() => setShowQR(true)}
-              className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white rounded-xl p-4 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
+              className="bg-linear-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white rounded-xl p-4 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
             >
               <Share2 className="w-6 h-6" />
               <span className="text-sm md:text-base">Share</span>
@@ -195,7 +195,7 @@ export function LandingPage() {
                   alt={`Gallery ${index + 1}`}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-pink-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-linear-to-t from-pink-500/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
             ))}
           </div>
@@ -203,7 +203,7 @@ export function LandingPage() {
           <div className="text-center mt-8">
             <button
               onClick={() => navigate("/photos")}
-              className="bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 inline-flex items-center gap-2"
+              className="bg-linear-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 inline-flex items-center gap-2"
             >
               <Camera className="w-5 h-5" />
               View All Photos
@@ -213,7 +213,7 @@ export function LandingPage() {
       </div>
 
       {/* Venue Section */}
-      <div className="bg-gradient-to-br from-rose-50 to-pink-50 py-16 px-4">
+      <div className="bg-linear-to-br from-rose-50 to-pink-50 py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl mb-4 text-rose-900">
@@ -232,14 +232,14 @@ export function LandingPage() {
                 alt="Venue"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-pink-900/60 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-pink-900/60 to-transparent" />
             </div>
 
             {/* Venue Info */}
             <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col justify-center">
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-linear-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -251,7 +251,7 @@ export function LandingPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-linear-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -262,7 +262,7 @@ export function LandingPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-400 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-linear-to-br from-pink-500 to-rose-400 rounded-full flex items-center justify-center flex-shrink-0">
                     <Cake className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -276,7 +276,7 @@ export function LandingPage() {
                   href="https://maps.google.com"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white text-center py-4 rounded-xl shadow-lg transition-all transform hover:scale-105"
+                  className="block w-full bg-linear-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white text-center py-4 rounded-xl shadow-lg transition-all transform hover:scale-105"
                 >
                   Get Directions
                 </a>
