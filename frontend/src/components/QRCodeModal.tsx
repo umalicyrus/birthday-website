@@ -24,7 +24,7 @@ export function QRCodeModal({ onClose }: QRCodeModalProps) {
             light: "#ffffff",
           },
         },
-        (error) => {
+        (error: any) => {
           if (error) console.error(error);
         },
       );
@@ -113,7 +113,7 @@ export function QRCodeModal({ onClose }: QRCodeModalProps) {
         <div className="grid grid-cols-2 gap-4">
           <button
             onClick={handleDownload}
-            className="bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white py-3 rounded-xl shadow-md transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+            className="bg-linear-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white py-3 rounded-xl shadow-md transition-all transform hover:scale-105 flex items-center justify-center gap-2"
           >
             <Download className="w-5 h-5" />
             Download QR
