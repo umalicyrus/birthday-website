@@ -55,7 +55,7 @@ export function LandingPage() {
   const [isGalleryHovered, setIsGalleryHovered] = useState(false);
   const [nextImages, setNextImages] = useState<string[]>([]);
 
-  const birthdayDate = new Date("2026-05-20T14:00:00");
+  const birthdayDate = new Date("2026-05-20T14:00:00+08:00");
 
   useEffect(() => {
     const timer = setInterval(() => {

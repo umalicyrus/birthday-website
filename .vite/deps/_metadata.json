@@ -1,0 +1,78 @@
+{
+  "hash": "7c27b69f",
+  "configHash": "2c1214c6",
+  "lockfileHash": "03a47347",
+  "browserHash": "e6fd7c72",
+  "optimized": {
+    "canvas-confetti": {
+      "src": "../../node_modules/canvas-confetti/dist/confetti.module.mjs",
+      "file": "canvas-confetti.js",
+      "fileHash": "8405bbc1",
+      "needsInterop": false
+    },
+    "lucide-react": {
+      "src": "../../node_modules/lucide-react/dist/esm/lucide-react.js",
+      "file": "lucide-react.js",
+      "fileHash": "98cd6942",
+      "needsInterop": false
+    },
+    "motion/react": {
+      "src": "../../node_modules/motion/dist/es/react.mjs",
+      "file": "motion_react.js",
+      "fileHash": "b38c3de3",
+      "needsInterop": false
+    },
+    "qrcode": {
+      "src": "../../node_modules/qrcode/lib/browser.js",
+      "file": "qrcode.js",
+      "fileHash": "9eabc63a",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "6a7d442b",
+      "needsInterop": true
+    },
+    "react-responsive-masonry": {
+      "src": "../../node_modules/react-responsive-masonry/es/index.js",
+      "file": "react-responsive-masonry.js",
+      "fileHash": "ae06cfc4",
+      "needsInterop": false
+    },
+    "react-router": {
+      "src": "../../node_modules/react-router/dist/development/index.mjs",
+      "file": "react-router.js",
+      "fileHash": "54640d4e",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "d0c1f8ab",
+      "needsInterop": true
+    },
+    "react/jsx-dev-runtime": {
+      "src": "../../node_modules/react/jsx-dev-runtime.js",
+      "file": "react_jsx-dev-runtime.js",
+      "fileHash": "deb5aedb",
+      "needsInterop": true
+    },
+    "sonner": {
+      "src": "../../node_modules/sonner/dist/index.mjs",
+      "file": "sonner.js",
+      "fileHash": "8f974eed",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-D6g4UhsZ": {
+      "file": "chunk-D6g4UhsZ.js",
+      "isDynamicEntry": false
+    },
+    "react-dom-BxEVyh8D": {
+      "file": "react-dom-BxEVyh8D.js",
+      "isDynamicEntry": false
+    }
+  }
+}
