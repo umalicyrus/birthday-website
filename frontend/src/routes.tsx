@@ -1,8 +1,7 @@
 import { createBrowserRouter } from "react-router";
-import { LandingPage } from "./pages/LandingPage";
-import { PhotoGallery } from "./pages/PhotoGallery";
-import { DonationPage } from "./pages/DonationPage";
-import { MessagesPage } from "./pages/MessagesPage";
+import { LandingPage } from "./app/pages/LandingPage";
+import { PhotoGallery } from "./app/pages/PhotoGallery";
+import { MessagesPage } from "./app/pages/MessagesPage";
 
 export const router = createBrowserRouter([
   {
@@ -12,10 +11,6 @@ export const router = createBrowserRouter([
   {
     path: "/photos",
     Component: PhotoGallery,
-  },
-  {
-    path: "/donate",
-    Component: DonationPage,
   },
   {
     path: "/messages",

@@ -24,9 +24,9 @@ export function QRCodeModal({ onClose }: QRCodeModalProps) {
             light: "#ffffff",
           },
         },
-        (error: any) => {
+        (error) => {
           if (error) console.error(error);
-        },
+        }
       );
     }
   }, [inviteUrl]);
@@ -66,9 +66,7 @@ export function QRCodeModal({ onClose }: QRCodeModalProps) {
 
         {/* Header */}
         <div className="text-center mb-6">
-          <h2 className="text-2xl md:text-3xl mb-2 text-purple-900">
-            Share Invitation
-          </h2>
+          <h2 className="text-2xl md:text-3xl mb-2 text-purple-900">Share Invitation</h2>
           <p className="text-gray-600">Scan QR code or share the link</p>
         </div>
 
@@ -81,9 +79,7 @@ export function QRCodeModal({ onClose }: QRCodeModalProps) {
 
         {/* URL Display */}
         <div className="mb-6">
-          <label className="block text-sm mb-2 text-gray-700">
-            Invitation Link
-          </label>
+          <label className="block text-sm mb-2 text-gray-700">Invitation Link</label>
           <div className="flex gap-2">
             <input
               type="text"
@@ -95,17 +91,11 @@ export function QRCodeModal({ onClose }: QRCodeModalProps) {
               onClick={handleCopyLink}
               className="bg-purple-500 hover:bg-purple-600 text-white px-4 py-3 rounded-xl transition-colors flex items-center gap-2"
             >
-              {copied ? (
-                <Check className="w-5 h-5" />
-              ) : (
-                <Copy className="w-5 h-5" />
-              )}
+              {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
             </button>
           </div>
           {copied && (
-            <p className="text-sm text-green-600 mt-2 text-center">
-              Link copied to clipboard!
-            </p>
+            <p className="text-sm text-green-600 mt-2 text-center">Link copied to clipboard!</p>
           )}
         </div>
 
@@ -113,7 +103,7 @@ export function QRCodeModal({ onClose }: QRCodeModalProps) {
         <div className="grid grid-cols-2 gap-4">
           <button
             onClick={handleDownload}
-            className="bg-linear-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white py-3 rounded-xl shadow-md transition-all transform hover:scale-105 flex items-center justify-center gap-2"
+            className="bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white py-3 rounded-xl shadow-md transition-all transform hover:scale-105 flex items-center justify-center gap-2"
           >
             <Download className="w-5 h-5" />
             Download QR

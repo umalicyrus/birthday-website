@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { ArrowLeft, Gift, DollarSign, Heart, Check } from "lucide-react";
-// import confetti from "canvas-confetti";
+import confetti from "canvas-confetti";
 
 interface Donation {
   id: string;
@@ -16,9 +16,7 @@ export function DonationPage() {
   const [donorName, setDonorName] = useState("");
   const [amount, setAmount] = useState("");
   const [message, setMessage] = useState("");
-  const [paymentMethod, setPaymentMethod] = useState<
-    "card" | "paypal" | "venmo"
-  >("card");
+  const [paymentMethod, setPaymentMethod] = useState<"card" | "paypal" | "venmo">("card");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [donations, setDonations] = useState<Donation[]>([
     {
@@ -57,11 +55,11 @@ export function DonationPage() {
     setIsSubmitted(true);
 
     // Celebrate!
-    // confetti({
-    //   particleCount: 150,
-    //   spread: 100,
-    //   origin: { y: 0.6 },
-    // });
+    confetti({
+      particleCount: 150,
+      spread: 100,
+      origin: { y: 0.6 },
+    });
 
     // Reset form
     setTimeout(() => {
@@ -95,9 +93,7 @@ export function DonationPage() {
           <Gift className="w-12 h-12 mx-auto mb-4" />
           <h2 className="text-3xl md:text-4xl mb-2">${totalRaised}</h2>
           <p className="text-lg opacity-90">Total Gifts Received</p>
-          <p className="text-sm opacity-75 mt-2">
-            {donations.length} generous donors
-          </p>
+          <p className="text-sm opacity-75 mt-2">{donations.length} generous donors</p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -114,17 +110,13 @@ export function DonationPage() {
                   <Check className="w-10 h-10 text-green-600" />
                 </div>
                 <h3 className="text-2xl mb-2 text-green-600">Thank You!</h3>
-                <p className="text-gray-600">
-                  Your gift has been sent successfully! 🎉
-                </p>
+                <p className="text-gray-600">Your gift has been sent successfully! 🎉</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit}>
                 {/* Name */}
                 <div className="mb-4">
-                  <label className="block text-sm mb-2 text-gray-700">
-                    Your Name
-                  </label>
+                  <label className="block text-sm mb-2 text-gray-700">Your Name</label>
                   <input
                     type="text"
                     value={donorName}
@@ -137,9 +129,7 @@ export function DonationPage() {
 
                 {/* Amount Presets */}
                 <div className="mb-4">
-                  <label className="block text-sm mb-2 text-gray-700">
-                    Select Amount
-                  </label>
+                  <label className="block text-sm mb-2 text-gray-700">Select Amount</label>
                   <div className="grid grid-cols-4 gap-2 mb-2">
                     {presetAmounts.map((preset) => (
                       <button
@@ -189,9 +179,7 @@ export function DonationPage() {
 
                 {/* Payment Method */}
                 <div className="mb-6">
-                  <label className="block text-sm mb-2 text-gray-700">
-                    Payment Method
-                  </label>
+                  <label className="block text-sm mb-2 text-gray-700">Payment Method</label>
                   <div className="grid grid-cols-3 gap-2">
                     <button
                       type="button"
@@ -266,9 +254,7 @@ export function DonationPage() {
                     </div>
                   </div>
                   {donation.message && (
-                    <p className="text-gray-600 text-sm italic">
-                      "{donation.message}"
-                    </p>
+                    <p className="text-gray-600 text-sm italic">"{donation.message}"</p>
                   )}
                 </div>
               ))}
@@ -279,10 +265,9 @@ export function DonationPage() {
         {/* Note */}
         <div className="mt-8 bg-rose-50 border-l-4 border-rose-500 p-4 rounded-lg">
           <p className="text-sm text-rose-800">
-            <strong>Note:</strong> This is a demo interface. In a real
-            application, payments would be processed through a secure payment
-            gateway like Stripe or PayPal. For production use, consider
-            connecting to a backend service for secure payment processing.
+            <strong>Note:</strong> This is a demo interface. In a real application, payments would
+            be processed through a secure payment gateway like Stripe or PayPal. For production use,
+            consider connecting to a backend service for secure payment processing.
           </p>
         </div>
       </div>

@@ -2,9 +2,10 @@
 
 import * as React from "react";
 import { GripVerticalIcon } from "lucide-react";
-import * as ResizablePrimitive from "react-resizable-panels";
+import { Panel } from "react-resizable-panels";
 
-const { PanelGroup, Panel, PanelResizeHandle } = ResizablePrimitive as any;
+const { PanelGroup, PanelResizeHandle } =
+  require("react-resizable-panels") as any;
 
 import { cn } from "./utils";
 
