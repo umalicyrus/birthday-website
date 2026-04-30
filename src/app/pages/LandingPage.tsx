@@ -12,30 +12,12 @@ import {
 } from "lucide-react";
 import { QRCodeModal } from "../components/QRCodeModal";
 import { GuestMemories } from "../components/GuestMemories";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import confetti from "canvas-confetti";
 
-const allSarahPhotos = Array.from({ length: 30 }, (_, i) => `/${i + 1}.jpg`);
+const allNaiahPhotos = Array.from({ length: 30 }, (_, i) => `/${i + 1}.jpg`);
 
-function getRandomPhotos(
-  photos: string[],
-  count: number,
-  exclude: string[] = [],
-): string[] {
-  const available = photos.filter((p) => !exclude.includes(p));
-  const shuffled = [...available].sort(() => Math.random() - 0.5);
-  return shuffled.slice(0, count);
-}
-
-const premiumTransition = {
-  initial: { opacity: 0, scale: 0.95 },
-  animate: { opacity: 1, scale: 1 },
-  exit: { opacity: 0, scale: 1.05 },
-  transition: {
-    duration: 1.5, // Increased from 0.8 to 1.5
-    ease: [0.4, 0, 0.2, 1],
-  },
-};
+const fixedGalleryImages = ["/4.jpg", "/2.jpg", "/26.jpg", "/24.jpg"];
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -47,15 +29,9 @@ export function LandingPage() {
     minutes: 0,
     seconds: 0,
   });
-  const [galleryImages, setGalleryImages] = useState(() =>
-    getRandomPhotos(allSarahPhotos, 4),
-  );
-  const [prevGalleryImages, setPrevGalleryImages] = useState<string[]>([]);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isGalleryHovered, setIsGalleryHovered] = useState(false);
-  const [nextImages, setNextImages] = useState<string[]>([]);
 
-  const birthdayDate = new Date("2026-05-20T14:00:00+08:00");
+  const birthdayDate = new Date("2026-05-20T14:00:00");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -83,28 +59,6 @@ export function LandingPage() {
   }, []);
 
   useEffect(() => {
-    if (isGalleryHovered) return;
-
-    const galleryTimer = setInterval(() => {
-      setPrevGalleryImages([...galleryImages]);
-      const newImages =
-        nextImages.length > 0
-          ? nextImages
-          : getRandomPhotos(allSarahPhotos, 4, galleryImages);
-      setGalleryImages(newImages);
-
-      const preloadNext = getRandomPhotos(allSarahPhotos, 4, newImages);
-      setNextImages(preloadNext);
-      preloadNext.forEach((src) => {
-        const img = new window.Image();
-        img.src = src;
-      });
-    }, 10000); // 2. Increased from 4500 to 10000 (10 seconds)
-
-    return () => clearInterval(galleryTimer);
-  }, [galleryImages, isGalleryHovered, nextImages]);
-
-  useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const x = (e.clientX / window.innerWidth - 0.5) * 20;
       const y = (e.clientY / window.innerHeight - 0.5) * 20;
@@ -121,6 +75,13 @@ export function LandingPage() {
       spread: 70,
       origin: { y: 0.6 },
     });
+  };
+
+  const scrollToVenue = () => {
+    const venueSection = document.getElementById("venue-section");
+    if (venueSection) {
+      venueSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   };
 
   return (
@@ -206,7 +167,7 @@ export function LandingPage() {
               >
                 <img
                   src="/10.jpg"
-                  alt="Sarah"
+                  alt="Naiah"
                   className="w-full h-full object-cover"
                   style={{
                     objectPosition: "center 30%",
@@ -294,7 +255,7 @@ export function LandingPage() {
           </div>
 
           {/* Action Buttons */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mb-8 max-w-3xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mb-8 max-w-4xl mx-auto">
             <button
               onClick={() => setShowGuestMemories(true)}
               className="bg-linear-to-r from-rose-400 to-rose-500 hover:from-rose-500 hover:to-rose-600 text-white rounded-xl p-5 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
@@ -309,6 +270,14 @@ export function LandingPage() {
             >
               <MessageCircle className="w-7 h-7" />
               <span className="text-base md:text-lg">Messages</span>
+            </button>
+
+            <button
+              onClick={scrollToVenue}
+              className="bg-linear-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white rounded-xl p-5 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
+            >
+              <MapPin className="w-7 h-7" />
+              <span className="text-base md:text-lg">View Venue</span>
             </button>
 
             <button
@@ -330,7 +299,7 @@ export function LandingPage() {
         </div>
       </div>
 
-      {/* Sarah's Gallery Section */}
+      {/* Naiah's Gallery Section */}
       <div className="bg-white py-16 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
@@ -348,38 +317,37 @@ export function LandingPage() {
             </p>
           </div>
 
-          <div
-            className="grid grid-cols-2 md:grid-cols-4 gap-4"
-            onMouseEnter={() => setIsGalleryHovered(true)}
-            onMouseLeave={() => setIsGalleryHovered(false)}
-          >
-            <AnimatePresence mode="wait">
-              {galleryImages.map((img, index) => (
-                <motion.div
-                  key={`${img}-${index}`} // Use index or unique ID to ensure Framer tracks it
-                  initial={premiumTransition.initial}
-                  animate={premiumTransition.animate}
-                  exit={premiumTransition.exit}
-                  transition={{
-                    duration: 1.5, // Matches the premiumTransition
-                    delay: index * 0.2, // Slightly increased stagger for elegance
-                    ease: [0.4, 0, 0.2, 1],
-                  }}
-                  className="relative group overflow-hidden rounded-2xl shadow-lg aspect-square cursor-pointer"
-                  onClick={() => navigate("/photos")}
-                >
-                  <motion.img
-                    src={img}
-                    alt={`Sarah ${index + 1}`}
-                    className="w-full h-full object-cover"
-                    // Slowed down the subtle scale-in effect as well
-                    animate={{ scale: 1.02 }}
-                    transition={{ duration: 1.5, ease: "easeOut" }}
-                  />
-                  {/* ... rest of your overlays */}
-                </motion.div>
-              ))}
-            </AnimatePresence>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {fixedGalleryImages.map((img, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1,
+                  ease: [0.4, 0, 0.2, 1],
+                }}
+                className="relative group overflow-hidden rounded-2xl shadow-lg aspect-square cursor-pointer"
+                onClick={() => navigate("/photos")}
+                whileHover={{
+                  scale: 1.03,
+                  transition: { duration: 0.3 },
+                }}
+              >
+                <img
+                  src={img}
+                  alt={`Naiah ${index + 1}`}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+
+                {/* Gradient Overlay */}
+                <div className="absolute inset-0 bg-linear-to-t from-pink-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Hover Glow */}
+                <div className="absolute -inset-1 bg-linear-to-r from-pink-400 via-rose-400 to-pink-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl -z-10 transition-opacity duration-500" />
+              </motion.div>
+            ))}
           </div>
 
           <div className="text-center mt-8">
@@ -395,7 +363,10 @@ export function LandingPage() {
       </div>
 
       {/* Venue Section */}
-      <div className="bg-linear-to-br from-rose-50 to-pink-50 py-16 px-4">
+      <div
+        id="venue-section"
+        className="bg-linear-to-br from-rose-50 to-pink-50 py-16 px-4"
+      >
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl mb-4 text-rose-900">
@@ -421,7 +392,7 @@ export function LandingPage() {
             <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col justify-center">
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-linear-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-linear-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center shrink-0">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -436,19 +407,18 @@ export function LandingPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-linear-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-linear-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center shrink-0">
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg mb-1 text-rose-900">Time</h3>
-                    <p className="text-rose-700">
-                      May 20, 2026 at 2:00 PM to 4:00 PM
-                    </p>
+                    <p className="text-rose-700">May 20, 2026</p>
+                    <p className="text-rose-600">2:00 PM - 6:00 PM</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-linear-to-br from-pink-500 to-rose-400 rounded-full flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 bg-linear-to-br from-pink-500 to-rose-400 rounded-full flex items-center justify-center shrink-0">
                     <Cake className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -459,7 +429,7 @@ export function LandingPage() {
                 </div>
 
                 <a
-                  href="https://www.google.com/maps/place/Jollibee+Xentro+Mall/@13.4038575,121.1815391,17z/data=!3m1!4b1!4m6!3m5!1s0x33bce9ad2f64c64f:0x5b504dbe7b0f7e5a!8m2!3d13.4038575!4d121.184114!16s%2Fg%2F11clyt1tg4?entry=ttu&g_ep=EgoyMDI2MDQxOS4wIKXMDSoASAFQAw%3D%3D"
+                  href="https://maps.google.com"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full bg-linear-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white text-center py-4 rounded-xl shadow-lg transition-all transform hover:scale-105"

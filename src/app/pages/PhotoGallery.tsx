@@ -71,10 +71,12 @@ export function PhotoGallery() {
 
   const minSwipeDistance = 50;
 
-  const previewPhotos = photos.slice(0, 8);
+  const previewPhotos = photos.slice(0, 32);
   const displayPhotos = showFavoritesOnly
     ? photos.filter((p) => p.isLiked)
-    : photos;
+    : showAllPhotos
+      ? photos
+      : previewPhotos;
 
   const handleLike = (photoId: string, e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -175,7 +177,7 @@ export function PhotoGallery() {
   }, [selectedPhoto]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 relative">
       {/* Decorative Sparkles Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(20)].map((_, i) => (
@@ -300,7 +302,7 @@ export function PhotoGallery() {
             </Masonry>
 
             {/* View All Photos Button */}
-            <div className="text-center mt-12">
+            {/* <div className="text-center mt-12">
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -313,7 +315,7 @@ export function PhotoGallery() {
                   initial={false}
                 />
               </motion.button>
-            </div>
+            </div> */}
           </motion.div>
         )}
 
