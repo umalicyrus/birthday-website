@@ -116,7 +116,7 @@ export function PhotoGallery() {
     if (navigator.share) {
       try {
         await navigator.share({
-          title: "Celebrating Sarah",
+          title: "Celebrating Naiah's",
           text: photo.caption,
           url: window.location.href,
         });
@@ -215,7 +215,7 @@ export function PhotoGallery() {
           </button>
           <div className="text-center">
             <h1 className="text-2xl md:text-3xl font-serif text-rose-900">
-              Celebrating Sarah
+              Celebrating Naiah's
             </h1>
             <p className="text-sm text-pink-600 mt-1">
               Beautiful moments and cherished memories
