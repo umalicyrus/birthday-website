@@ -429,7 +429,7 @@ export function LandingPage() {
                 </div>
 
                 <a
-                  href="https://maps.google.com"
+                  href="https://www.google.com/maps/dir//Jollibee+Xentro+Mall,+Roxas+Drive,+Sto.+Ni%C3%B1o,+Calapan+City,+Oriental+Mindoro/@13.4038575,121.1815391,17z/data=!4m17!1m7!3m6!1s0x33bce9ad2f64c64f:0x5b504dbe7b0f7e5a!2sJollibee+Xentro+Mall!8m2!3d13.4038575!4d121.184114!16s%2Fg%2F11clyt1tg4!4m8!1m0!1m5!1m1!1s0x33bce9ad2f64c64f:0x5b504dbe7b0f7e5a!2m2!1d121.1841139!2d13.4038575!3e9?entry=ttu&g_ep=EgoyMDI2MDQyNy4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="block w-full bg-linear-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white text-center py-4 rounded-xl shadow-lg transition-all transform hover:scale-105"
