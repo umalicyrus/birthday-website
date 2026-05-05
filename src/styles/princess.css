@@ -1,0 +1,56 @@
+/* Princess Theme Styles */
+
+.bg-radial-gradient {
+  background: radial-gradient(circle at center, var(--tw-gradient-stops));
+}
+
+/* Magical glow effect */
+@keyframes magical-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(251, 207, 232, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(251, 207, 232, 0.6);
+  }
+}
+
+.magical-glow {
+  animation: magical-glow 3s ease-in-out infinite;
+}
+
+/* Shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.3) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 3s linear infinite;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { ArrowLeft, MessageCircle, Heart, Send } from "lucide-react";
+import { PrincessBackground } from "../components/PrincessBackground";
 
 interface Message {
   id: string;
@@ -17,20 +18,23 @@ export function MessagesPage() {
     {
       id: "1",
       name: "Emily Johnson",
-      message: "Happy Birthday Sarah! May this year bring you endless joy and success! 🎉🎂",
-      timestamp: new Date("2026-04-10T10:30:00"),
+      message:
+        "Happy Birthday Naiah! May this year bring you endless joy and success! 🎉🎂",
+      timestamp: new Date("2026-05-10T10:30:00"),
     },
     {
       id: "2",
       name: "Michael Brown",
-      message: "Wishing you a fantastic birthday filled with love and laughter! 🎈",
-      timestamp: new Date("2026-04-11T14:20:00"),
+      message:
+        "Wishing you a fantastic birthday filled with love and laughter! 🎈",
+      timestamp: new Date("2026-05-11T14:20:00"),
     },
     {
       id: "3",
       name: "Lisa Anderson",
-      message: "Hope your special day is as wonderful as you are! Happy Birthday! 💝",
-      timestamp: new Date("2026-04-12T09:15:00"),
+      message:
+        "Hope your special day is as wonderful as you are! Happy Birthday! 💝",
+      timestamp: new Date("2026-05-12T09:15:00"),
     },
   ]);
 
@@ -52,9 +56,12 @@ export function MessagesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100">
+    <div className="min-h-screen relative">
+      {/* Princess Magical Background */}
+      <PrincessBackground />
+
       {/* Header */}
-      <div className="sticky top-0 bg-white/80 backdrop-blur-md shadow-sm z-10">
+      <div className="sticky top-0 bg-white/90 backdrop-blur-md shadow-sm z-20">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <button
             onClick={() => navigate("/")}
@@ -68,7 +75,7 @@ export function MessagesPage() {
         </div>
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 py-8 relative z-10">
         {/* Stats */}
         <div className="bg-gradient-to-r from-pink-400 to-rose-500 rounded-2xl shadow-lg p-6 md:p-8 mb-8 text-white text-center">
           <MessageCircle className="w-12 h-12 mx-auto mb-4" />
@@ -77,7 +84,7 @@ export function MessagesPage() {
         </div>
 
         {/* Message Form */}
-        <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+        <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-6 mb-8 border-2 border-pink-100">
           <h2 className="text-2xl mb-6 text-rose-900 flex items-center gap-2">
             <Heart className="w-6 h-6 text-pink-500" />
             Leave a Birthday Wish
@@ -85,7 +92,9 @@ export function MessagesPage() {
 
           <form onSubmit={handleSubmit}>
             <div className="mb-4">
-              <label className="block text-sm mb-2 text-gray-700">Your Name</label>
+              <label className="block text-sm mb-2 text-gray-700">
+                Your Name
+              </label>
               <input
                 type="text"
                 value={name}
@@ -97,7 +106,9 @@ export function MessagesPage() {
             </div>
 
             <div className="mb-6">
-              <label className="block text-sm mb-2 text-gray-700">Your Message</label>
+              <label className="block text-sm mb-2 text-gray-700">
+                Your Message
+              </label>
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
@@ -125,9 +136,12 @@ export function MessagesPage() {
           {messages.map((msg, index) => (
             <div
               key={msg.id}
-              className="bg-white rounded-2xl shadow-md p-6 hover:shadow-lg transition-shadow"
+              className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-md p-6 hover:shadow-xl transition-all border border-pink-50 hover:border-pink-200"
               style={{
-                animation: index < 3 ? `fadeIn 0.5s ease-in ${index * 0.1}s backwards` : "none",
+                animation:
+                  index < 3
+                    ? `fadeIn 0.5s ease-in ${index * 0.1}s backwards`
+                    : "none",
               }}
             >
               <div className="flex items-start gap-4">

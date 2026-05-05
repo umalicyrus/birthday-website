@@ -12,12 +12,15 @@ import {
 } from "lucide-react";
 import { QRCodeModal } from "../components/QRCodeModal";
 import { GuestMemories } from "../components/GuestMemories";
+import { PrincessBackground } from "../components/PrincessBackground";
+import { RoyalGifts } from "../components/RoyalGifts";
+import { SpecialWishes } from "../components/SpecialWishes";
 import { motion } from "motion/react";
 import confetti from "canvas-confetti";
 
 const allNaiahPhotos = Array.from({ length: 30 }, (_, i) => `/${i + 1}.jpg`);
 
-const fixedGalleryImages = ["/4.jpg", "/2.jpg", "/26.jpg", "/24.jpg"];
+const fixedGalleryImages = ["/1.jpg", "/2.jpg", "/3.jpg", "/4.jpg"];
 
 export function LandingPage() {
   const navigate = useNavigate();
@@ -85,16 +88,12 @@ export function LandingPage() {
   };
 
   return (
-    <div className="min-h-screen bg-linear-to-br from-pink-50 via-rose-50 to-pink-100">
-      {/* Hero Section */}
-      <div className="relative min-h-screen flex items-center justify-center overflow-hidden py-12">
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-10"
-          style={{
-            backgroundImage: `url('https://images.unsplash.com/photo-1598622443054-499119043e82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiaXJ0aGRheSUyMGNlbGVicmF0aW9uJTIwYmFsbG9vbnN8ZW58MXx8fHwxNzc2MTk5NjY2fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral')`,
-          }}
-        />
+    <div className="min-h-screen relative">
+      {/* Princess Magical Background */}
+      <PrincessBackground />
 
+      {/* Hero Section */}
+      <div className="relative min-h-screen flex items-center justify-center overflow-hidden py-12 z-10">
         <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
           {/* Profile Image */}
           <div className="mb-8 flex justify-center">
@@ -143,7 +142,7 @@ export function LandingPage() {
                   },
                 }}
               >
-                <div className="absolute inset-1 bg-linear-to-br from-pink-50 via-rose-50 to-pink-100 rounded-full" />
+                <div className="absolute inset-1 bg-gradient-to-br from-pink-50 via-rose-50 to-pink-100 rounded-full" />
               </motion.div>
 
               {/* Main Profile Image */}
@@ -174,12 +173,12 @@ export function LandingPage() {
                   }}
                 />
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-pink-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-pink-500/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
 
               {/* Birthday Cake Badge */}
               <motion.div
-                className="absolute -bottom-2 -right-2 bg-linear-to-br from-pink-500 to-rose-500 text-white p-3 rounded-full shadow-lg"
+                className="absolute -bottom-2 -right-2 bg-gradient-to-br from-pink-500 to-rose-500 text-white p-3 rounded-full shadow-lg"
                 animate={{
                   rotate: [0, 10, -10, 0],
                   scale: [1, 1.1, 1],
@@ -227,27 +226,27 @@ export function LandingPage() {
           </h2>
 
           {/* Date & Time */}
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 mb-8 shadow-lg">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 mb-8 shadow-2xl border-2 border-pink-200/50">
             <div className="flex items-center justify-center gap-2 mb-4 text-rose-700">
               <Calendar className="w-5 h-5" />
-              <p className="text-lg">May 20, 2026 at 2:00 PM</p>
+              <p className="text-lg">May 20, 2026 at 1:00 PM</p>
             </div>
 
             {/* Countdown */}
             <div className="grid grid-cols-4 gap-2 md:gap-4">
-              <div className="bg-linear-to-br from-pink-400 to-pink-500 text-white rounded-xl p-3 md:p-4">
+              <div className="bg-gradient-to-br from-pink-400 to-pink-500 text-white rounded-xl p-3 md:p-4">
                 <div className="text-2xl md:text-4xl">{timeLeft.days}</div>
                 <div className="text-xs md:text-sm">Days</div>
               </div>
-              <div className="bg-linear-to-br from-rose-400 to-rose-500 text-white rounded-xl p-3 md:p-4">
+              <div className="bg-gradient-to-br from-rose-400 to-rose-500 text-white rounded-xl p-3 md:p-4">
                 <div className="text-2xl md:text-4xl">{timeLeft.hours}</div>
                 <div className="text-xs md:text-sm">Hours</div>
               </div>
-              <div className="bg-linear-to-br from-pink-500 to-rose-500 text-white rounded-xl p-3 md:p-4">
+              <div className="bg-gradient-to-br from-pink-500 to-rose-500 text-white rounded-xl p-3 md:p-4">
                 <div className="text-2xl md:text-4xl">{timeLeft.minutes}</div>
                 <div className="text-xs md:text-sm">Minutes</div>
               </div>
-              <div className="bg-linear-to-br from-rose-400 to-pink-400 text-white rounded-xl p-3 md:p-4">
+              <div className="bg-gradient-to-br from-rose-400 to-pink-400 text-white rounded-xl p-3 md:p-4">
                 <div className="text-2xl md:text-4xl">{timeLeft.seconds}</div>
                 <div className="text-xs md:text-sm">Seconds</div>
               </div>
@@ -258,7 +257,7 @@ export function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mb-8 max-w-4xl mx-auto">
             <button
               onClick={() => setShowGuestMemories(true)}
-              className="bg-linear-to-r from-rose-400 to-rose-500 hover:from-rose-500 hover:to-rose-600 text-white rounded-xl p-5 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
+              className="bg-gradient-to-r from-rose-400 to-rose-500 hover:from-rose-500 hover:to-rose-600 text-white rounded-xl p-5 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
             >
               <Camera className="w-7 h-7" />
               <span className="text-base md:text-lg">Upload Photo</span>
@@ -266,7 +265,7 @@ export function LandingPage() {
 
             <button
               onClick={() => navigate("/messages")}
-              className="bg-linear-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white rounded-xl p-5 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
+              className="bg-gradient-to-r from-pink-500 to-rose-400 hover:from-pink-600 hover:to-rose-500 text-white rounded-xl p-5 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
             >
               <MessageCircle className="w-7 h-7" />
               <span className="text-base md:text-lg">Messages</span>
@@ -274,7 +273,7 @@ export function LandingPage() {
 
             <button
               onClick={scrollToVenue}
-              className="bg-linear-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white rounded-xl p-5 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
+              className="bg-gradient-to-r from-pink-400 to-pink-500 hover:from-pink-500 hover:to-pink-600 text-white rounded-xl p-5 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
             >
               <MapPin className="w-7 h-7" />
               <span className="text-base md:text-lg">View Venue</span>
@@ -282,7 +281,7 @@ export function LandingPage() {
 
             <button
               onClick={() => setShowQR(true)}
-              className="bg-linear-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white rounded-xl p-5 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
+              className="bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white rounded-xl p-5 shadow-lg transition-all transform hover:scale-105 flex flex-col items-center gap-2"
             >
               <Share2 className="w-7 h-7" />
               <span className="text-base md:text-lg">Share</span>
@@ -300,10 +299,47 @@ export function LandingPage() {
       </div>
 
       {/* Naiah's Gallery Section */}
-      <div className="bg-white py-16 px-4">
+      <div className="relative py-16 px-4 z-10 bg-white/90 backdrop-blur-md">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 bg-linear-to-r from-pink-100 to-rose-100 px-6 py-2 rounded-full mb-4">
+            {/* Decorative Crown */}
+            <motion.div
+              className="inline-block mb-4"
+              animate={{
+                rotate: [0, 5, -5, 0],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            >
+              <svg
+                width="60"
+                height="60"
+                viewBox="0 0 100 100"
+                className="text-amber-400 mx-auto"
+              >
+                <path
+                  d="M50,20 L60,40 L80,35 L70,55 L90,60 L50,65 L10,60 L30,55 L20,35 L40,40 Z"
+                  fill="currentColor"
+                  opacity="0.8"
+                />
+                <circle cx="50" cy="20" r="5" fill="currentColor" />
+                <circle cx="20" cy="35" r="4" fill="currentColor" />
+                <circle cx="80" cy="35" r="4" fill="currentColor" />
+                <rect
+                  x="15"
+                  y="60"
+                  width="70"
+                  height="8"
+                  rx="2"
+                  fill="currentColor"
+                />
+              </svg>
+            </motion.div>
+
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-100 to-rose-100 px-6 py-2 rounded-full mb-4 border border-pink-200">
               <Image className="w-5 h-5 text-pink-600" />
               <span className="text-sm font-medium text-pink-900">
                 Naiah's Moments
@@ -342,10 +378,10 @@ export function LandingPage() {
                 />
 
                 {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-pink-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-t from-pink-500/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                 {/* Hover Glow */}
-                <div className="absolute -inset-1 bg-linear-to-r from-pink-400 via-rose-400 to-pink-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl -z-10 transition-opacity duration-500" />
+                <div className="absolute -inset-1 bg-gradient-to-r from-pink-400 via-rose-400 to-pink-400 rounded-2xl opacity-0 group-hover:opacity-20 blur-xl -z-10 transition-opacity duration-500" />
               </motion.div>
             ))}
           </div>
@@ -353,7 +389,7 @@ export function LandingPage() {
           <div className="text-center mt-8">
             <button
               onClick={() => navigate("/photos")}
-              className="bg-linear-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 inline-flex items-center gap-2"
+              className="bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white px-8 py-3 rounded-full shadow-lg transition-all transform hover:scale-105 inline-flex items-center gap-2"
             >
               <Image className="w-5 h-5" />
               View All Photos
@@ -362,11 +398,14 @@ export function LandingPage() {
         </div>
       </div>
 
+      {/* Royal Gifts Section */}
+      <RoyalGifts />
+
+      {/* Special Wishes Section */}
+      <SpecialWishes />
+
       {/* Venue Section */}
-      <div
-        id="venue-section"
-        className="bg-linear-to-br from-rose-50 to-pink-50 py-16 px-4"
-      >
+      <div id="venue-section" className="relative py-16 px-4 z-10">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl mb-4 text-rose-900">
@@ -381,24 +420,23 @@ export function LandingPage() {
             {/* Venue Image */}
             <div className="relative rounded-2xl overflow-hidden shadow-2xl h-64 md:h-auto">
               <img
-                src="./venue.jpg"
+                src="/venue.jpg"
                 alt="Venue"
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-linear-to-t from-pink-900/60 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-pink-900/60 to-transparent" />
             </div>
 
             {/* Venue Info */}
-            <div className="bg-white rounded-2xl shadow-lg p-8 flex flex-col justify-center">
+            <div className="bg-white/95 backdrop-blur-sm rounded-2xl shadow-2xl p-8 flex flex-col justify-center border-2 border-pink-100">
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-linear-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-br from-pink-400 to-rose-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <MapPin className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg mb-1 text-rose-900">Location</h3>
-                    <p className="text-rose-700"> Jollibee Xentro Mall</p>
-                    <p className="text-rose-700"> Roxas Drive</p>
+                    <p className="text-rose-700">Roxas Drive </p>
                     <p className="text-rose-600">Sto. Niño</p>
                     <p className="text-rose-600">
                       Calapan City, Oriental Mindoro
@@ -407,32 +445,31 @@ export function LandingPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-linear-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-br from-rose-400 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0">
                     <Clock className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg mb-1 text-rose-900">Time</h3>
                     <p className="text-rose-700">May 20, 2026</p>
-                    <p className="text-rose-600">2:00 PM - 6:00 PM</p>
+                    <p className="text-rose-600">1:30 PM - 4:00 PM</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-linear-to-br from-pink-500 to-rose-400 rounded-full flex items-center justify-center shrink-0">
+                  <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-400 rounded-full flex items-center justify-center flex-shrink-0">
                     <Cake className="w-6 h-6 text-white" />
                   </div>
                   <div>
                     <h3 className="text-lg mb-1 text-rose-900">Dress Code</h3>
-                    <p className="text-rose-700">Semi-Formal</p>
-                    <p className="text-rose-600">Feel free to wear pink! 💖</p>
+                    <p className="text-rose-700">Casual</p>
                   </div>
                 </div>
 
                 <a
-                  href="https://www.google.com/maps/dir//Jollibee+Xentro+Mall,+Roxas+Drive,+Sto.+Ni%C3%B1o,+Calapan+City,+Oriental+Mindoro/@13.4038575,121.1815391,17z/data=!4m17!1m7!3m6!1s0x33bce9ad2f64c64f:0x5b504dbe7b0f7e5a!2sJollibee+Xentro+Mall!8m2!3d13.4038575!4d121.184114!16s%2Fg%2F11clyt1tg4!4m8!1m0!1m5!1m1!1s0x33bce9ad2f64c64f:0x5b504dbe7b0f7e5a!2m2!1d121.1841139!2d13.4038575!3e9?entry=ttu&g_ep=EgoyMDI2MDQyNy4wIKXMDSoASAFQAw%3D%3D"
+                  href="https://www.google.com/maps/dir//Jollibee+Xentro+Mall,+Roxas+Drive,+Sto.+Ni%C3%B1o,+Calapan+City,+Oriental+Mindoro/@13.4038575,121.1815391,17z/data=!4m17!1m7!3m6!1s0x33bce9ad2f64c64f:0x5b504dbe7b0f7e5a!2sJollibee+Xentro+Mall!8m2!3d13.4038575!4d121.184114!16s%2Fg%2F11clyt1tg4!4m8!1m0!1m5!1m1!1s0x33bce9ad2f64c64f:0x5b504dbe7b0f7e5a!2m2!1d121.1841139!2d13.4038575!3e9?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block w-full bg-linear-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white text-center py-4 rounded-xl shadow-lg transition-all transform hover:scale-105"
+                  className="block w-full bg-gradient-to-r from-pink-400 to-rose-500 hover:from-pink-500 hover:to-rose-600 text-white text-center py-4 rounded-xl shadow-lg transition-all transform hover:scale-105"
                 >
                   Get Directions
                 </a>
