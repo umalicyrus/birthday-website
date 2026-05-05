@@ -229,7 +229,7 @@ export function LandingPage() {
           <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 mb-8 shadow-2xl border-2 border-pink-200/50">
             <div className="flex items-center justify-center gap-2 mb-4 text-rose-700">
               <Calendar className="w-5 h-5" />
-              <p className="text-lg">May 20, 2026 at 1:00 PM</p>
+              <p className="text-lg">May 20, 2026 at 1:30 PM</p>
             </div>
 
             {/* Countdown */}
