@@ -314,7 +314,7 @@ export function LandingPage() {
                 ease: "easeInOut",
               }}
             >
-              <svg
+              {/* <svg
                 width="60"
                 height="60"
                 viewBox="0 0 100 100"
@@ -336,7 +336,7 @@ export function LandingPage() {
                   rx="2"
                   fill="currentColor"
                 />
-              </svg>
+              </svg> */}
             </motion.div>
 
             <div className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-100 to-rose-100 px-6 py-2 rounded-full mb-4 border border-pink-200">

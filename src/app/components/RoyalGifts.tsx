@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import {
-  ChevronLeft,
-  ChevronRight,
-  Gift,
   ShoppingBag,
   BookOpen,
   Footprints,
@@ -12,10 +9,10 @@ import {
   Gem,
   Flower,
 } from "lucide-react";
+import { SparkleIcon, HeartIcon, CrownIcon } from "./PrincessIcons";
 
 interface Giver {
   name: string;
-  nickname: string;
 }
 
 interface GiftCategory {
@@ -33,13 +30,13 @@ const giftCategories: GiftCategory[] = [
     icon: <ShoppingBag className="w-8 h-8" />,
     color: "from-pink-400 to-rose-400",
     givers: [
-      { name: "Ate Love", nickname: "Fashion Fairy" },
-      { name: "Ninang Joy", nickname: "Style Queen" },
-      { name: "Tito Mark", nickname: "Bag Master" },
-      { name: "Ninang Lisa", nickname: "Chic Charm" },
-      { name: "Tito Sam", nickname: "Trendy Guru" },
-      { name: "Ate Marie", nickname: "Glam Guide" },
-      { name: "Ninong Paul", nickname: "Style Wizard" },
+      { name: "Eisha" },
+      { name: "Zoe" },
+      { name: "Zairi" },
+      { name: "Alleiah" },
+      { name: "Sofia" },
+      { name: "Maxie" },
+      { name: "Millan" },
     ],
   },
   {
@@ -48,13 +45,13 @@ const giftCategories: GiftCategory[] = [
     icon: <BookOpen className="w-8 h-8" />,
     color: "from-blue-400 to-indigo-400",
     givers: [
-      { name: "Ninong Carlo", nickname: "Brain Booster" },
-      { name: "Ate Mae", nickname: "Study Buddy" },
-      { name: "Tito Jay", nickname: "Notebook King" },
-      { name: "Ninang Ruby", nickname: "Smart Star" },
-      { name: "Tito Ed", nickname: "Pencil Prince" },
-      { name: "Ate Lyn", nickname: "Book Belle" },
-      { name: "Ninong Tim", nickname: "Wisdom Keeper" },
+      { name: "Prince" },
+      { name: "Psalm" },
+      { name: "Juan" },
+      { name: "Calvin" },
+      { name: "Calyx" },
+      { name: "Maki and Hans" },
+      { name: "Enzo and Ellie" },
     ],
   },
   {
@@ -63,13 +60,13 @@ const giftCategories: GiftCategory[] = [
     icon: <Footprints className="w-8 h-8" />,
     color: "from-purple-400 to-pink-400",
     givers: [
-      { name: "Ninang Anna", nickname: "Cinderella Step" },
-      { name: "Tito Ben", nickname: "Sneaker Hero" },
-      { name: "Ate Jem", nickname: "Shoe Fairy" },
-      { name: "Ninong Mike", nickname: "Sole King" },
-      { name: "Ninang Cath", nickname: "Walk Wonder" },
-      { name: "Tito Joe", nickname: "Stride Star" },
-      { name: "Ate Bella", nickname: "Step Princess" },
+      { name: "Janaya" },
+      { name: "Belle" },
+      { name: "Althea" },
+      { name: "Aliyah" },
+      { name: "Makayla" },
+      { name: "Audree" },
+      { name: "Jimrose" },
     ],
   },
   {
@@ -78,13 +75,13 @@ const giftCategories: GiftCategory[] = [
     icon: <Shirt className="w-8 h-8" />,
     color: "from-rose-400 to-pink-500",
     givers: [
-      { name: "Ate Sarah", nickname: "Princess Stylist" },
-      { name: "Ninang Kate", nickname: "Royal Designer" },
-      { name: "Tito Alex", nickname: "Fashion King" },
-      { name: "Ninang Nina", nickname: "Dress Duchess" },
-      { name: "Ate Mia", nickname: "Gown Goddess" },
-      { name: "Ninong Luis", nickname: "Outfit Oracle" },
-      { name: "Ninang Belle", nickname: "Chic Champion" },
+      { name: "Aaliyah" },
+      { name: "Chelo" },
+      { name: "Kwin" },
+      { name: "Dae" },
+      { name: "Keirra" },
+      { name: "Sky" },
+      { name: "Renee Ann" },
     ],
   },
   {
@@ -93,13 +90,13 @@ const giftCategories: GiftCategory[] = [
     icon: <Gamepad2 className="w-8 h-8" />,
     color: "from-amber-400 to-orange-400",
     givers: [
-      { name: "Tito Ron", nickname: "Fun Master" },
-      { name: "Ate Kim", nickname: "Playtime Queen" },
-      { name: "Ninong Dave", nickname: "Joy Keeper" },
-      { name: "Ninang Amy", nickname: "Smile Maker" },
-      { name: "Tito Chris", nickname: "Game Guru" },
-      { name: "Ate Jess", nickname: "Happy Helper" },
-      { name: "Ninong Rick", nickname: "Play Prince" },
+      { name: "Enzo" },
+      { name: "Ken Shinn" },
+      { name: "Rafael" },
+      { name: "Bedosh" },
+      { name: "Harvey" },
+      { name: "Ethan" },
+      { name: "Matmat" },
     ],
   },
   {
@@ -108,13 +105,13 @@ const giftCategories: GiftCategory[] = [
     icon: <Gem className="w-8 h-8" />,
     color: "from-yellow-400 to-amber-500",
     givers: [
-      { name: "Ninang Rose", nickname: "Golden Heart" },
-      { name: "Tito Dan", nickname: "Treasure Keeper" },
-      { name: "Ate Gem", nickname: "Jewel Queen" },
-      { name: "Ninong Leo", nickname: "Crown Keeper" },
-      { name: "Ninang Pearl", nickname: "Sparkle Star" },
-      { name: "Tito Max", nickname: "Gem Guardian" },
-      { name: "Ate Luna", nickname: "Diamond Dame" },
+      { name: "Ninang Emma" },
+      { name: "Ninang Tallie" },
+      { name: "Ninang Che Anne" },
+      { name: "Ninang Atty Len" },
+      { name: "Ninang Michelle" },
+      { name: "Ninang Cheska" },
+      { name: "Ninang Myla" },
     ],
   },
   {
@@ -123,13 +120,42 @@ const giftCategories: GiftCategory[] = [
     icon: <Flower className="w-8 h-8" />,
     color: "from-pink-300 to-rose-300",
     givers: [
-      { name: "Ninang Grace", nickname: "Bloom Fairy" },
-      { name: "Ate Lou", nickname: "Petal Princess" },
-      { name: "Ninong Tom", nickname: "Garden King" },
-      { name: "Ninang Lily", nickname: "Rose Maiden" },
-      { name: "Tito Ray", nickname: "Blossom Boss" },
-      { name: "Ate Flora", nickname: "Flower Fairy" },
-      { name: "Ninong Val", nickname: "Bloom Baron" },
+      { name: "Ninong Franie" },
+      { name: "Ninong Doc Jojo" },
+      { name: "Ninong Gewel" },
+      { name: "Ninong Ricard" },
+      { name: "Lolo Dulo" },
+      { name: "Papa" },
+      { name: "Daddy Donnie" },
+      { name: "Tatay" },
+    ],
+  },
+  {
+    id: "special",
+    title: "Special Gifts & Wishes",
+    icon: <SparkleIcon className="w-10 h-10" />,
+    color: "from-amber-300 to-yellow-400",
+    givers: [
+      { name: "Lola Tining" },
+      { name: "Lola Inay" },
+      { name: "Lola Luneth" },
+      { name: "Lola Mayeth" },
+      { name: "Lola Melith" },
+      { name: "Tita Dang" },
+      { name: "Mama Che" },
+      { name: "Ate Ella" },
+      { name: "Ate Fiona" },
+      { name: "Ate Love Enia" },
+      { name: "Ate CJ" },
+      { name: "Ate Intel" },
+      { name: "Ate Shandel" },
+      { name: "Ate Duday" },
+      { name: "Tita Rovy" },
+      { name: "Ate Ynah" },
+      { name: "Madam Mel" },
+      { name: "Mommy Jen" },
+      { name: "Yani" },
+      { name: "Nanay" },
     ],
   },
 ];
@@ -163,78 +189,9 @@ export function RoyalGifts() {
             className="text-center mb-16"
           >
             {/* Decorative Crown */}
-            <motion.div
-              className="inline-block mb-6"
-              animate={{
-                rotate: [0, 5, -5, 0],
-                scale: [1, 1.05, 1],
-              }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            >
-              <svg
-                width="80"
-                height="80"
-                viewBox="0 0 100 100"
-                className="text-amber-400 mx-auto drop-shadow-lg"
-              >
-                <defs>
-                  <linearGradient
-                    id="crownGradient"
-                    x1="0%"
-                    y1="0%"
-                    x2="0%"
-                    y2="100%"
-                  >
-                    <stop offset="0%" stopColor="#fbbf24" />
-                    <stop offset="100%" stopColor="#f59e0b" />
-                  </linearGradient>
-                </defs>
-                <path
-                  d="M50,15 L62,38 L85,32 L73,55 L95,62 L50,68 L5,62 L27,55 L15,32 L38,38 Z"
-                  fill="url(#crownGradient)"
-                  stroke="#d97706"
-                  strokeWidth="1"
-                />
-                <circle
-                  cx="50"
-                  cy="15"
-                  r="6"
-                  fill="#fef3c7"
-                  stroke="#d97706"
-                  strokeWidth="1"
-                />
-                <circle
-                  cx="15"
-                  cy="32"
-                  r="5"
-                  fill="#fef3c7"
-                  stroke="#d97706"
-                  strokeWidth="1"
-                />
-                <circle
-                  cx="85"
-                  cy="32"
-                  r="5"
-                  fill="#fef3c7"
-                  stroke="#d97706"
-                  strokeWidth="1"
-                />
-                <rect
-                  x="10"
-                  y="62"
-                  width="80"
-                  height="10"
-                  rx="3"
-                  fill="url(#crownGradient)"
-                  stroke="#d97706"
-                  strokeWidth="1"
-                />
-              </svg>
-            </motion.div>
+            <div className="inline-block mb-6">
+              <CrownIcon className="w-20 h-20 mx-auto" />
+            </div>
 
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
@@ -256,118 +213,244 @@ export function RoyalGifts() {
 
           {/* Gift Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-            {giftCategories.map((category, index) => (
-              <div key={category.id} className="flex flex-col">
-                <motion.div
-                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.03, y: -3 }}
-                  onClick={() => handleCardClick(category.id)}
-                  className="cursor-pointer mb-4"
+            {giftCategories.map((category, index) => {
+              const isSpecial = category.id === "special";
+
+              return (
+                <div
+                  key={category.id}
+                  className={`flex flex-col ${isSpecial ? "md:col-span-2 lg:col-span-3 xl:col-span-4" : ""}`}
                 >
-                  <div className="relative overflow-hidden rounded-2xl bg-white/60 backdrop-blur-sm shadow-lg border border-pink-100 hover:border-pink-300 hover:shadow-xl transition-all duration-300 p-6">
-                    {/* Subtle Gold Corner Accent */}
-                    <div className="absolute top-0 right-0 w-12 h-12 opacity-20">
-                      <svg viewBox="0 0 100 100" className="text-amber-400">
-                        <circle cx="80" cy="20" r="15" fill="currentColor" />
-                      </svg>
-                    </div>
-
-                    {/* Icon */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 30, scale: 0.9 }}
+                    whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    whileHover={{ scale: isSpecial ? 1.01 : 1.03, y: -3 }}
+                    onClick={() => handleCardClick(category.id)}
+                    className="cursor-pointer mb-4"
+                  >
                     <div
-                      className={`w-16 h-16 mx-auto mb-3 rounded-full bg-gradient-to-br ${category.color} flex items-center justify-center text-white shadow-md`}
+                      className={`relative overflow-hidden rounded-2xl backdrop-blur-sm shadow-lg transition-all duration-300 ${
+                        isSpecial
+                          ? "bg-gradient-to-br from-amber-50/90 via-yellow-50/80 to-pink-50/90 border-2 border-amber-300 hover:border-amber-400 hover:shadow-2xl p-8"
+                          : "bg-white/60 border border-pink-100 hover:border-pink-300 hover:shadow-xl p-6"
+                      }`}
                     >
-                      {category.icon}
-                    </div>
+                      {/* Special Glowing Border Effect */}
+                      {isSpecial && (
+                        <motion.div
+                          className="absolute -inset-1 bg-gradient-to-r from-amber-400 via-yellow-300 to-pink-400 opacity-30 blur-xl -z-10 rounded-2xl"
+                          animate={{
+                            opacity: [0.2, 0.4, 0.2],
+                          }}
+                          transition={{
+                            duration: 3,
+                            repeat: Infinity,
+                          }}
+                        />
+                      )}
 
-                    {/* Title */}
-                    <h3 className="text-lg font-serif text-rose-900 text-center mb-2">
-                      {category.title}
-                    </h3>
-
-                    {/* Number Badge */}
-                    <div className="flex justify-center mb-3">
-                      <div className="bg-gradient-to-r from-pink-400 to-rose-400 text-white px-3 py-1 rounded-full text-xs font-medium shadow-sm">
-                        7 Givers
-                      </div>
-                    </div>
-
-                    {/* Expand Indicator */}
-                    <div className="text-center text-pink-500 text-xs font-medium">
-                      {expandedCards.has(category.id)
-                        ? "Hide ▲"
-                        : "View Details ▼"}
-                    </div>
-
-                    {/* Soft Glow on Hover */}
-                    <div className="absolute inset-0 bg-gradient-to-br from-pink-200/20 to-amber-200/20 opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none" />
-                  </div>
-                </motion.div>
-
-                {/* Expanded Details - Below Card */}
-                <AnimatePresence>
-                  {expandedCards.has(category.id) && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.4 }}
-                      className="overflow-hidden"
-                    >
-                      <motion.div
-                        initial={{ y: -10 }}
-                        animate={{ y: 0 }}
-                        className="bg-white/70 backdrop-blur-sm rounded-2xl shadow-lg border border-pink-200 p-5"
-                      >
-                        <div className="flex items-center gap-3 mb-4 pb-3 border-b border-pink-100">
-                          <div
-                            className={`w-10 h-10 rounded-full bg-gradient-to-br ${category.color} flex items-center justify-center text-white shadow-md flex-shrink-0`}
-                          >
-                            {category.icon}
+                      {/* Decorative Elements */}
+                      {isSpecial ? (
+                        <>
+                          {/* Crown decorations for special card */}
+                          <div className="absolute top-4 left-4 opacity-20">
+                            <CrownIcon className="w-8 h-8 text-amber-500" />
                           </div>
-                          <div>
-                            <h4 className="text-lg font-serif text-rose-900">
-                              {category.title}
-                            </h4>
-                            <p className="text-xs text-pink-500 italic">
-                              Our generous sponsors
-                            </p>
+                          <div className="absolute top-4 right-4 opacity-20">
+                            <CrownIcon className="w-8 h-8 text-amber-500" />
                           </div>
-                        </div>
-
-                        <div className="space-y-2">
-                          {category.givers.map((giver, idx) => (
+                          {/* Sparkles */}
+                          {[...Array(6)].map((_, i) => (
                             <motion.div
-                              key={idx}
-                              initial={{ opacity: 0, x: -10 }}
-                              animate={{ opacity: 1, x: 0 }}
-                              transition={{ delay: idx * 0.05 }}
-                              className="bg-gradient-to-r from-pink-50/80 to-rose-50/80 rounded-xl p-3 border border-pink-100 hover:border-pink-300 hover:shadow-md transition-all duration-200"
+                              key={i}
+                              className="absolute"
+                              style={{
+                                top: `${20 + Math.random() * 60}%`,
+                                left: `${10 + Math.random() * 80}%`,
+                              }}
+                              animate={{
+                                opacity: [0, 1, 0],
+                                scale: [0, 1.5, 0],
+                              }}
+                              transition={{
+                                duration: 2,
+                                repeat: Infinity,
+                                delay: i * 0.3,
+                              }}
                             >
-                              <div className="flex items-center gap-2">
-                                <div className="w-7 h-7 rounded-full bg-gradient-to-br from-pink-300 to-rose-300 flex items-center justify-center text-white text-xs font-bold shadow-sm flex-shrink-0">
-                                  {idx + 1}
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <p className="font-medium text-rose-900 text-sm truncate">
-                                    {giver.name}
-                                  </p>
-                                  <p className="text-xs text-pink-600 italic truncate">
-                                    "{giver.nickname}"
-                                  </p>
-                                </div>
-                              </div>
+                              <svg width="12" height="12" viewBox="0 0 20 20">
+                                <path
+                                  d="M10 0L11.5 8.5L20 10L11.5 11.5L10 20L8.5 11.5L0 10L8.5 8.5L10 0Z"
+                                  fill="#fbbf24"
+                                  opacity="0.6"
+                                />
+                              </svg>
                             </motion.div>
                           ))}
+                        </>
+                      ) : (
+                        <div className="absolute top-0 right-0 w-12 h-12 opacity-20">
+                          <svg viewBox="0 0 100 100" className="text-amber-400">
+                            <circle
+                              cx="80"
+                              cy="20"
+                              r="15"
+                              fill="currentColor"
+                            />
+                          </svg>
                         </div>
+                      )}
+
+                      {/* Icon */}
+                      <div
+                        className={`${isSpecial ? "w-20 h-20" : "w-16 h-16"} mx-auto mb-3 rounded-full bg-gradient-to-br ${category.color} flex items-center justify-center text-white shadow-lg`}
+                      >
+                        {category.icon}
+                      </div>
+
+                      {/* Title */}
+                      <h3
+                        className={`${isSpecial ? "text-2xl md:text-3xl" : "text-lg"} font-serif text-rose-900 text-center mb-2 ${isSpecial ? "font-bold" : ""}`}
+                      >
+                        {category.title}
+                      </h3>
+
+                      {isSpecial && (
+                        <p className="text-center text-amber-700 italic text-sm mb-3">
+                          With love from our cherished family ✨
+                        </p>
+                      )}
+
+                      {/* Number Badge */}
+                      <div className="flex justify-center mb-3">
+                        <div
+                          className={`bg-gradient-to-r ${
+                            isSpecial
+                              ? "from-amber-400 to-yellow-400"
+                              : "from-pink-400 to-rose-400"
+                          } text-white px-3 py-1 rounded-full text-xs font-medium shadow-sm`}
+                        >
+                          {isSpecial
+                            ? `${category.givers.length} Special Givers`
+                            : "7 Givers"}
+                        </div>
+                      </div>
+
+                      {/* Expand Indicator */}
+                      <div
+                        className={`text-center ${isSpecial ? "text-amber-600" : "text-pink-500"} text-xs font-medium`}
+                      >
+                        {expandedCards.has(category.id)
+                          ? "Hide ▲"
+                          : "View Details ▼"}
+                      </div>
+
+                      {/* Soft Glow on Hover */}
+                      <div
+                        className={`absolute inset-0 bg-gradient-to-br ${
+                          isSpecial
+                            ? "from-amber-200/30 to-yellow-200/30"
+                            : "from-pink-200/20 to-amber-200/20"
+                        } opacity-0 hover:opacity-100 transition-opacity duration-300 rounded-2xl pointer-events-none`}
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Expanded Details - Below Card */}
+                  <AnimatePresence>
+                    {expandedCards.has(category.id) && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.4 }}
+                        className="overflow-hidden"
+                      >
+                        <motion.div
+                          initial={{ y: -10 }}
+                          animate={{ y: 0 }}
+                          className={`backdrop-blur-sm rounded-2xl shadow-lg border p-5 ${
+                            isSpecial
+                              ? "bg-gradient-to-br from-amber-50/90 to-yellow-50/80 border-amber-200"
+                              : "bg-white/70 border-pink-200"
+                          }`}
+                        >
+                          <div
+                            className={`flex items-center gap-3 mb-4 pb-3 border-b ${
+                              isSpecial ? "border-amber-200" : "border-pink-100"
+                            }`}
+                          >
+                            <div
+                              className={`w-10 h-10 rounded-full bg-gradient-to-br ${category.color} flex items-center justify-center text-white shadow-md flex-shrink-0`}
+                            >
+                              {category.icon}
+                            </div>
+                            <div>
+                              <h4 className="text-lg font-serif text-rose-900">
+                                {category.title}
+                              </h4>
+                              <p
+                                className={`text-xs italic ${isSpecial ? "text-amber-600" : "text-pink-500"}`}
+                              >
+                                {isSpecial
+                                  ? "Our beloved family & friends"
+                                  : "Our generous sponsors"}
+                              </p>
+                            </div>
+                          </div>
+
+                          {isSpecial ? (
+                            // Two-column layout for special category
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                              {category.givers.map((giver, idx) => (
+                                <motion.div
+                                  key={idx}
+                                  initial={{ opacity: 0, scale: 0.9 }}
+                                  animate={{ opacity: 1, scale: 1 }}
+                                  transition={{ delay: idx * 0.03 }}
+                                  className="bg-white/80 rounded-xl p-3 border border-amber-200 hover:border-amber-400 hover:shadow-md transition-all duration-200 flex items-center gap-2"
+                                >
+                                  <HeartIcon className="w-5 h-5 flex-shrink-0" />
+                                  <p className="font-medium text-rose-900 text-sm">
+                                    {giver.name}
+                                  </p>
+                                </motion.div>
+                              ))}
+                            </div>
+                          ) : (
+                            // Original layout for other categories
+                            <div className="space-y-2">
+                              {category.givers.map((giver, idx) => (
+                                <motion.div
+                                  key={idx}
+                                  initial={{ opacity: 0, x: -10 }}
+                                  animate={{ opacity: 1, x: 0 }}
+                                  transition={{ delay: idx * 0.05 }}
+                                  className="bg-gradient-to-r from-pink-50/80 to-rose-50/80 rounded-xl p-3 border border-pink-100 hover:border-pink-300 hover:shadow-md transition-all duration-200"
+                                >
+                                  <div className="flex items-center gap-2">
+                                    <div className="w-7 h-7 rounded-full bg-gradient-to-br from-pink-300 to-rose-300 flex items-center justify-center text-white text-xs font-bold shadow-sm flex-shrink-0">
+                                      {idx + 1}
+                                    </div>
+                                    <div className="flex-1 min-w-0">
+                                      <p className="font-medium text-rose-900 text-sm truncate">
+                                        {giver.name}
+                                      </p>
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              ))}
+                            </div>
+                          )}
+                        </motion.div>
                       </motion.div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-            ))}
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
