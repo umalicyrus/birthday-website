@@ -156,6 +156,9 @@ const giftCategories: GiftCategory[] = [
       { name: "Mommy Jen" },
       { name: "Yani" },
       { name: "Nanay" },
+      { name: "Ninang Bell" },
+      { name: "Ninang Frailyne" },
+      { name: "Tita Rovy" },
     ],
   },
 ];
@@ -403,22 +406,34 @@ export function RoyalGifts() {
 
                           {isSpecial ? (
                             // Two-column layout for special category
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-                              {category.givers.map((giver, idx) => (
-                                <motion.div
-                                  key={idx}
-                                  initial={{ opacity: 0, scale: 0.9 }}
-                                  animate={{ opacity: 1, scale: 1 }}
-                                  transition={{ delay: idx * 0.03 }}
-                                  className="bg-white/80 rounded-xl p-3 border border-amber-200 hover:border-amber-400 hover:shadow-md transition-all duration-200 flex items-center gap-2"
+                            <>
+                              <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-3 gap-3">
+                                {category.givers.map((giver, idx) => (
+                                  <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: idx * 0.03 }}
+                                    className="bg-white/80 rounded-xl p-3 border border-amber-200 hover:border-amber-400 hover:shadow-md transition-all duration-200 flex items-center gap-2"
+                                  >
+                                    <HeartIcon className="w-5 h-5 flex-shrink-0" />
+                                    <p className="font-medium text-rose-900 text-sm">
+                                      {giver.name}
+                                    </p>
+                                  </motion.div>
+                                ))}
+                              </div>
+
+                              {/* Hide Button */}
+                              <div className="flex justify-center mt-6">
+                                <button
+                                  onClick={() => handleCardClick(category.id)}
+                                  className="px-5 py-2 rounded-full text-sm font-medium shadow-md transition-all hover:scale-105 bg-gradient-to-r from-amber-400 to-yellow-400 text-white"
                                 >
-                                  <HeartIcon className="w-5 h-5 flex-shrink-0" />
-                                  <p className="font-medium text-rose-900 text-sm">
-                                    {giver.name}
-                                  </p>
-                                </motion.div>
-                              ))}
-                            </div>
+                                  Hide ▲
+                                </button>
+                              </div>
+                            </>
                           ) : (
                             // Original layout for other categories
                             <div className="space-y-2">
@@ -442,6 +457,18 @@ export function RoyalGifts() {
                                   </div>
                                 </motion.div>
                               ))}
+                              <div className="flex justify-center mt-6">
+                                <button
+                                  onClick={() => handleCardClick(category.id)}
+                                  className={`px-4 py-2 rounded-full text-sm font-medium shadow-md transition-all hover:scale-105 ${
+                                    isSpecial
+                                      ? "bg-gradient-to-r from-amber-400 to-yellow-400 text-white"
+                                      : "bg-gradient-to-r from-pink-400 to-rose-400 text-white"
+                                  }`}
+                                >
+                                  Hide ▲
+                                </button>
+                              </div>
                             </div>
                           )}
                         </motion.div>

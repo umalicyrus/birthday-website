@@ -174,7 +174,7 @@ export function PhotoGallery() {
   }, [selectedPhoto]);
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative">
       {/* Princess Magical Background */}
       <PrincessBackground />
 
