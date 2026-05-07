@@ -61,7 +61,7 @@ const giftCategories: GiftCategory[] = [
     color: "from-purple-400 to-pink-400",
     givers: [
       { name: "Janaya" },
-      { name: "Belle" },
+      { name: "Bella" },
       { name: "Althea" },
       { name: "Aliyah" },
       { name: "Makayla" },
@@ -156,7 +156,7 @@ const giftCategories: GiftCategory[] = [
       { name: "Mommy Jen" },
       { name: "Yani" },
       { name: "Nanay" },
-      { name: "Ninang Bell" },
+      { name: "Ninang Belle" },
       { name: "Ninang Frailyne" },
       { name: "Tita Rovy" },
     ],
